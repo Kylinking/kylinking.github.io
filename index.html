@@ -20,15 +20,6 @@ title: 我的Blog
     		<a class="nav-item" href="#">集</a>
     	</nav>    	
     </div>
-
-
-<div class="container">
-<h2>{{ page.title }}</h2>
-<p>最新文章</p>
-{% for post in site.posts %}
-<div>{{ post.date | date_to_string }} <p>{{ post.content }}</p></div>
-{% endfor %}
-</div>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script type="text/javascript" src="/assets/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/assets/default.js"></script>
