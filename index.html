@@ -10,41 +10,41 @@ title: 我的Blog
 	　<title>静</title>
 	</head>
 	<body>
-	<div class="page">
-	  <div class="banner-background">   
-	    <img class="icon" src="{{ base-url }}/jing.jpg"; />   
-	  </div> 
-	  <div class="blog-header container">
-	    <nav>
-	      <a class="nav-item" href="#">目</a>
-	      <a class="nav-item" href="#">集</a>
-	    </nav>  
-	  </div>
-	   <div class="container blog-index" >
-	  <div class="row">
-      <div class="col-sm-8">
-	 
-	  	 {% for post in site.posts %}
-	  	 <div class="posts-index">
-	  	 	<a class="post-title-index" href="{{ post.url }}"><p class="text-right"><strong>{{ post.title }}</strong></p></a> 
-	  	 	<p class="post-meta-index small text-right">{{ post.date | date: "%Y年%-m月%-d日 "}} by {{ post.author }}</p>
-	  	 	<div class="excerpt">
-	  	 		{{ post.excerpt }}
-	  	 	</div>
-	  	 </div>
-	  	 {% endfor %}
-	  </div>
-	  </div><!-- row -->
-	  </div>
-	  	</div>
-	  	<div class="blog-footer">
-		<p>Welcome Here</p>
-		<p>Welcome Here</p>
-		<p>Welcome Here</p>
-	</div>
+		<div class="page">
+			<div class="banner-background">   
+			    <img class="icon" src="{{ base-url }}/jing.jpg"; />   
+			</div> 
+			<div class="blog-header container">
+			    <nav>
+			      <a class="nav-item" href="#">目</a>
+			      <a class="nav-item" href="#">集</a>
+			    </nav>  
+			</div>
+			<div class="container blog-index" >
+			  <div class="row">
+		      <div class="col-sm-8">			 
+			  	 {% for post in site.posts %}
+			  	 <div class="posts-index">
+			  	 	<a class="post-title-index" href="{{ post.url }}"><p class="text-right"><strong>{{ post.title }}</strong></p></a> 
+			  	 	<p class="post-meta-index small text-right">{{ post.date | date: "%Y年%-m月%-d日 "}} by {{ post.author }}</p>
+			  	 	<div class="excerpt">
+			  	 		{{ post.excerpt }}
+			  	 	</div>
+			  	 </div>
+			  	 {% endfor %}
+			  </div>
+			  </div><!-- row -->
+			</div>
+			<div class="push"></div>
+		</div>
+		  	<footer class="blog-footer">
+			<p>Welcome Here</p>
+			<p>Welcome Here</p>
+			<p>Welcome Here</p>
+		</footer>
 
-	  <script type="text/javascript" src="/assets/default.js"></script>
-	  <script type="text/javascript" src="/assets/jquery.min.js"></script>
-	  <script type="text/javascript" src="/assets/bootstrap/js/bootstrap.min.js"></script>
+		  <script type="text/javascript" src="/assets/default.js"></script>
+		  <script type="text/javascript" src="/assets/jquery.min.js"></script>
+		  <script type="text/javascript" src="/assets/bootstrap/js/bootstrap.min.js"></script>
 	</body>
 </html>
