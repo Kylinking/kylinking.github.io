@@ -79,7 +79,10 @@ body{
 .post-page-nav{
   
 }
-
+.content{
+  font-size: 24px;
+  line-height: 2.0
+}
 .blog-footer {
   position: absolute;
   bottom: 0;
