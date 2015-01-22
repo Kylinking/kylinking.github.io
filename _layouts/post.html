@@ -3,13 +3,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="/assets/bootstrap/css/bootstrap.min.css">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" type="text/css" href="/assets/default.css">
+  <link rel="stylesheet" type="text/css" href="/assets/bootstrap/css/bootstrap.min.css">
   <link href="/assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
 　<title>{{ page.title }}</title>  
 </head>
 <body>
-<div class="content">{{ content }}</div>
+	<div class="page">
+ 	<div class="banner-background">   
+	    <img class="icon" src="{{ base-url }}/jing.jpg"; />   
+	</div> 
+	<div class="container">
+	  	<div class="row">
+	      	<div class="col-sm-8">
+		  	 	<div class="posts">
+		  	 		<div class="post-title "> {{ page.title }}</div>
+		  	 		<nav class="" ><a href="{{ base-url }}/index.html">&lt {{  }}</a></nav>
+		  	 		<div class="content text-left">{{ content }}</div>
+		  	 		<div class="post-page-nav">
+		      			<a href="#">前</a>
+		      			<a href="#">后</a>
+		  	 		</div>
+		  		</div>
+		  	</div>	  
+	  	</div><!-- row -->
+	</div><!-- container -->
+	<footer class="blog-footer" id="footer">
+		<p>Welcome Here</p>
+		<p>Welcome Here</p>
+		<p>Welcome Here</p>
+	</footer>
+	</div>
 <script type="text/javascript" src="/assets/default.js"></script>
 <script type="text/javascript" src="/assets/jquery.min.js"></script>
 <script type="text/javascript" src="/assets/bootstrap/js/bootstrap.min.js"></script>
