@@ -16,7 +16,7 @@ body{
 
 @media (min-width: 1200px) {
   .container {
-    width: 960px;
+    width: 1000px
   }
 }
 
@@ -50,6 +50,10 @@ body{
 .posts-index{
 
 }
+
+.pagination{
+}
+
 .post-title-index{
   font-size: 32px;
   color: black;
@@ -80,6 +84,12 @@ body{
 .content{  
   line-height: 2.0
 }
+
+
+
+
+
+
 .blog-footer {
   position: absolute;
   bottom: 0;
