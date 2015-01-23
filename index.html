@@ -25,41 +25,47 @@ title: 我的Blog
 			  <div class="row">
 		      <div class="col-sm-8">			 
 			  	 {% for post in paginator.posts %}
-			  	 <div class="posts-index">
-			  	 	<a class="post-title-index" href="{{ post.url }}"><p class="text-right"><strong>{{ post.title }}</strong></p></a> 
+			  	 <div class="posts-index well">
+			  	 	<a class="post-title-index" href="{{ post.url }}"><p class="text-right "><strong>{{ post.title }}</strong></p></a> 
 			  	 	<p class="post-meta-index small text-right">{{ post.date | date: "%Y年%-m月%-d日 "}} by {{ post.author }}</p>
 			  	 	<div class="excerpt">
 			  	 		{{ post.content }}
 			  	 	</div>
 			  	 </div>
 			  	 {% endfor %}
-<div class="text-center">
-  <ul class="pagination">
-  	{% if paginator.previous_page %}
-    <li>
-      {% if paginator.previous_page == 1 %}
-      <a href="/">起</a>
-	  {% else %}
-	   <a href="{{ paginator.previous_page_path }}"><p>起</p> </a>
-      {% endif %}
-    </li>
-    {% endif %}
-	
-	{% if paginator.next_page %}
-	<li>
-	   <a href="{{ paginator.next_page_path }}"><p>承</p> </a>
-    </li>
-    {% endif %}
-  </ul>
-</div>
+
+				<div class="text-center">
+				  <ul class="pager">
+				  	{% if paginator.previous_page %}
+				    <li>
+				      {% if paginator.previous_page == 1 %}
+				      <a href="/">页前</a>
+					  {% else %}
+					   <a href="{{ paginator.previous_page_path }}">页前</a>
+				      {% endif %}
+				   
+				    {% else %}
+				    	<li class="disabled"><a href="#">页前</a>
+				    {% endif %}
+					 </li>
+					{% if paginator.next_page %}
+					<li>
+					   <a href="{{ paginator.next_page_path }}">页后</a>
+				    {% else %}
+				    <li class="disabled">
+					   <a href="{{ paginator.next_page_path }}">页后 </a>
+				    {% endif %}
+				    </li>
+				  </ul>
+				</div>
 			  </div>
 			  </div><!-- row -->
 			</div>
+			<div class="to-top"></div>
 		</div>
 		  	<footer class="blog-footer">
 			<p>静思及远</p>
 		</footer>
-
 		  <script type="text/javascript" src="/assets/default.js"></script>
 		  <script type="text/javascript" src="/assets/jquery.min.js"></script>
 		  <script type="text/javascript" src="/assets/bootstrap/js/bootstrap.min.js"></script>

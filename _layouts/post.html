@@ -11,22 +11,46 @@
 </head>
 <body>
 	<div class="page">
+
  	<div class="banner-background">   
 	    <img class="icon" src="{{ base-url }}/jing.jpg"; />   
 	</div> 
+	
 	<div class="container">
+	<img src="{{ base-url }}/assets/flower.jpg" alt="" class="img-circle">
 	  	<div class="row">
 	      	<div class="col-sm-8">
 		  	 	<div class="posts">
-		  	 		<div class="post-title "> {{ page.title }}</div>
-		  	 		<nav class="" ><a href="{{ base-url }}/index.html">&lt {{  }}</a></nav>
+		  	 		<div class="post-title text-right"> {{ page.title }}</div>
+		  	 		<nav class="" ><a href="{{ base-url }}/index.html">&lt </a></nav>
 		  	 		<div class="content text-left">{{ content }}</div>
-		  	 		<div class="post-page-nav">
-		      			<a href="#">前</a>
-		      			<a href="#">后</a>
-		  	 		</div>
 		  		</div>
-		  	</div>	  
+		  	 
+		  	<div class="text-center">
+				  <ul class="pager">
+				  	{% if page.previous %}
+				    <li>
+				      <a href="{{ page.previous.url }}">页前</a>
+				    {% else %}
+				    <li class="disabled">
+				      <a href="{{ page.previous.url }}">页前</a>
+				    
+
+				    {% endif %}
+				    </li>
+					<li><a href="{{ base-url }}/index.html">首页</a></li>
+					{% if page.next %}
+				    <li>
+				      <a href="{{ page.next.url }}">页后</a>
+				    {% else %}
+				    <li class="disabled">
+				    	 <a href="{{ page.next.url }}">页后</a>
+				    {% endif %}
+				    </li>
+				  </ul>
+				</div>
+				</div>	
+			  </div>
 	  	</div><!-- row -->
 	</div><!-- container -->
 	</div>

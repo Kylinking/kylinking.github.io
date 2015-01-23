@@ -86,7 +86,11 @@ body{
 }
 
 
-
+.to-top{
+  position: fixed;
+  right: 20%;
+  bottom:80px;
+}
 
 
 
