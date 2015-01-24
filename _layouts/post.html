@@ -22,7 +22,6 @@
 	      	<div class="col-sm-8">
 		  	 	<div class="posts">
 		  	 		<div class="post-title text-right"> {{ page.title }}</div>
-		  	 		<nav class="" ><a href="{{ base-url }}/index.html">&lt </a></nav>
 		  	 		<div class="content text-left">{{ content }}</div>
 		  		</div>
 		  	 
@@ -38,7 +37,9 @@
 
 				    {% endif %}
 				    </li>
-					<li><a href="{{ base-url }}/index.html">首页</a></li>
+					 <li><a href="/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
+          
+        </li>
 					{% if page.next %}
 				    <li>
 				      <a href="{{ page.next.url }}">页后</a>
@@ -54,10 +55,7 @@
 	  	</div><!-- row -->
 	</div><!-- container -->
 	</div>
-	<footer class="blog-footer">
-		<p>静思及远</p>
-	</footer>
-	
+	{% include footer.html %}
 <script type="text/javascript" src="/assets/default.js"></script>
 <script type="text/javascript" src="/assets/jquery.min.js"></script>
 <script type="text/javascript" src="/assets/bootstrap/js/bootstrap.min.js"></script>
