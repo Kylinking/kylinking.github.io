@@ -70,7 +70,7 @@ body{
   top: 150px; 
 }
 .posts{
-    
+    margin-top: 10px;
 }
 .post-title{
   position: relative;
