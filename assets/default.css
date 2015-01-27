@@ -3,7 +3,8 @@ html{
   min-height: 100%;
 }
 body{
-  font-family: Georgia, serif;
+  font-family: "Verdana", "Hiragino Sans GB", "Microsoft YaHei",
+             "WenQuanYi Micro Hei", sans-serif;
   line-height: 1.5;
   font-size: 18px;
   height:100%
