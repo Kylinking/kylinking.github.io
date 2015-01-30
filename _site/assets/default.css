@@ -3,7 +3,8 @@ html{
   min-height: 100%;
 }
 body{
-  font-family: Georgia, serif;
+  font-family: "Verdana", "Hiragino Sans GB", "Microsoft YaHei",
+             "WenQuanYi Micro Hei", sans-serif;
   line-height: 1.5;
   font-size: 18px;
   height:100%
@@ -115,4 +116,14 @@ body{
   border-radius: 10px;
   border-top-right-radius: 25px;
   border-top-left-radius: 25px;
+}
+
+.sidebar-category {
+  padding: 15px;
+}
+.sidebar-about {
+  font-style: bold;
+  padding: 15px;
+  font-size: 15px;
+
 }

@@ -1,5 +1,4 @@
 ---
-title: 我的Blog
 ---
 <!DOCTYPE html>
 <html>
@@ -8,16 +7,6 @@ title: 我的Blog
 	  <link rel="stylesheet" type="text/css" href="/assets/bootstrap/css/bootstrap.min.css">
 	  <link rel="stylesheet" type="text/css" href="/assets/default.css">
 	　<title>静</title>
- <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-58905399-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
 	</head>
 	<body>
 		<div class="page">
@@ -27,8 +16,6 @@ title: 我的Blog
 			<div class="blog-header container">
 			    <nav>
 			      <img src="{{ base-url }}/assets/flower.jpg" alt="" class="img-circle">
-			      <a class="nav-item" href="#">目</a>
-			      <a class="nav-item" href="#">集</a>
 			    </nav>  
 			</div>
 			<div class="container blog-index" >
@@ -39,24 +26,9 @@ title: 我的Blog
 			  	 	<a class="post-title-index" href="{{ post.url }}"><p class="text-right "><strong>{{ post.title }}</strong></p></a> 
 			  	 	<p class="post-meta-index small text-right">{{ post.date | date: "%Y年%-m月%-d日 "}} by {{ post.author }}</p>
 			  	 	<div class="excerpt">
-			  	 		{{ post.content }}
+			  	 		{{ post.excerpt }}
 			  	 	</div>
-			  	 	  <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = 'kylinking'; // required: replace example with your forum shortname
-
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-			  	 </div>
 			  	 {% endfor %}
-
 				<div class="text-center">
 				  <ul class="pager">
 				  	{% if paginator.previous_page %}
@@ -65,8 +37,7 @@ title: 我的Blog
 				      <a href="/">页前</a>
 					  {% else %}
 					   <a href="{{ paginator.previous_page_path }}">页前</a>
-				      {% endif %}
-				   
+				      {% endif %}				   
 				    {% else %}
 				    	<li class="disabled"><a href="#">页前</a>
 				    {% endif %}
@@ -82,13 +53,27 @@ title: 我的Blog
 				  </ul>
 				</div>
 			  </div>
+			  </div>
+			   <div class="col-sm-3 col-sm-offset-1">
+         
+          <div class="sidebar-category well">
+            <h4>类目</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">随笔</a></li>
+            </ol>
+          </div>
+           <div class="sidebar-about well">
+            <h4>关于</h4>
+            <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+          </div>
+        </div>
 			  </div><!-- row -->
 			</div>
 			<div class="to-top"></div>
 		</div>
 			{% include footer.html %}
 		  <script type="text/javascript" src="/assets/default.js"></script>
-		  <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+		  <scripttype="text/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 		  <script type="text/javascript" src="/assets/bootstrap/js/bootstrap.min.js"></script>
 	</body>
 </html>

@@ -117,3 +117,13 @@ body{
   border-top-right-radius: 25px;
   border-top-left-radius: 25px;
 }
+
+.sidebar-category {
+  padding: 15px;
+}
+.sidebar-about {
+  font-style: bold;
+  padding: 15px;
+  font-size: 15px;
+
+}
