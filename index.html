@@ -2,79 +2,28 @@
 ---
 <!DOCTYPE html>
 <html>
-	<head>
-	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	  <link rel="stylesheet" type="text/css" href="/assets/bootstrap/css/bootstrap.min.css">
-	  <link rel="stylesheet" type="text/css" href="/assets/default.css">
-	　<title>静</title>
-	</head>
-	<body>
-		<div class="page">
-			<div class="banner-background">   
-			    <img class="icon" src="{{ base-url }}/jing.jpg"; />   
-			</div> 
-			<div class="blog-header container">
-			    <nav>
-			      <img src="{{ base-url }}/assets/flower.jpg" alt="" class="img-circle">
-			    </nav>  
-			</div>
-			<div class="container blog-index" >
-			  <div class="row">
-		      <div class="col-sm-8">			 
-			  	 {% for post in paginator.posts %}
-			  	 <div class="posts-index well">
-			  	 	<a class="post-title-index" href="{{ post.url }}"><p class="text-right "><strong>{{ post.title }}</strong></p></a> 
-			  	 	<p class="post-meta-index small text-right">{{ post.date | date: "%Y年%-m月%-d日 "}} by {{ post.author }}</p>
-			  	 	<div class="excerpt">
-			  	 		{{ post.excerpt }}
-			  	 	</div>
-			  	 {% endfor %}
-				<div class="text-center">
-				  <ul class="pager">
-				  	{% if paginator.previous_page %}
-				    <li>
-				      {% if paginator.previous_page == 1 %}
-				      <a href="/">页前</a>
-					  {% else %}
-					   <a href="{{ paginator.previous_page_path }}">页前</a>
-				      {% endif %}				   
-				    {% else %}
-				    	<li class="disabled"><a href="#">页前</a>
-				    {% endif %}
-					 </li>
-					{% if paginator.next_page %}
-					<li>
-					   <a href="{{ paginator.next_page_path }}">页后</a>
-				    {% else %}
-				    <li class="disabled">
-					   <a href="{{ paginator.next_page_path }}">页后 </a>
-				    {% endif %}
-				    </li>
-				  </ul>
-				</div>
-			  </div>
-			  </div>
-			   <div class="col-sm-3 col-sm-offset-1">
-         
-          <div class="sidebar-category well">
-            <h4>类目</h4>
-            <ol class="list-unstyled">
-              <li><a href="#">随笔</a></li>
-            </ol>
-          </div>
-           <div class="sidebar-about well">
-            <h4>关于</h4>
-            <p>Kylin's blog.</p>
-            <p>关于前端学习与生活点滴的内容</p>
-          </div>
-        </div>
-			  </div><!-- row -->
-			</div>
-			<div class="to-top"></div>
-		</div>
-			{% include footer.html %}
-		  <script type="text/javascript" src="/assets/default.js"></script>
-		  <scripttype="text/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-		  <script type="text/javascript" src="/assets/bootstrap/js/bootstrap.min.js"></script>
-	</body>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="/assets/default.css">
+<title>静</title>
+</head>
+<body>
+{% include header.html %}
+<aside>	
+</aside>
+<article>
+{% for post in site.posts limit:5 %}
+	<div class="recent_list">        
+             <h1>
+                <a class="post-title-index" href="{{ post.url }}">{{ post.title }}</a>
+             </h1>
+         <p>{{ post.date | date: "%Y年%-m月%-d日 "}}</p>
+                                        <div class="excerpt">
+                                                {{ post.excerpt }}
+                                        </div>        
+    </div>
+{% endfor %}
+</article>
+<footer>{% include footer.html %}</footer>
+</body>
 </html>

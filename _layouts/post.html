@@ -1,63 +1,39 @@
----
----
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <meta name="uyan_auth" content="878878694e" />
-  <link rel="stylesheet" type="text/css" href="/assets/bootstrap/css/bootstrap.min.css">
-  <link href="/assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/assets/default.css">
-　<title>{{ page.title }}</title>  
-
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="/assets/default.css">
+<title>静思及远 ---- {{ page.title }}</title>
 </head>
 <body>
-	<div class="page">
+{% include header.html %}
+<aside>	
+</aside>
+<article>
+<h1>{{ page.title }}</h1>
+<div class="content">
+	{{ content }}
+</div>
+	<!-- UY BEGIN -->
+	<div id="uyan_frame"></div>
+	<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2006439"></script>             
+<!-- UY END -->
+    <div>
+    <ul class="pager">
+                                        {% if page.previous %}
+                                    <li>
+                                      <a href="{{ page.previous.url }}">页前</a>
+                                    {% endif %}
+                                    </li>
+                                        {% if page.next %}
+                                    <li>
+                                      <a href="{{ page.next.url }}">页后</a>
+                                    {% endif %}
+                                    </li>
+                                  </ul>
+    </div>                            
+</article>
 
- 	<div class="banner-background">   
-	    <img class="icon" src="{{ base-url }}/jing.jpg"; />   
-	</div> 
-	
-	<div class="container">
-	<img src="{{ base-url }}/assets/flower.jpg" alt="" class="img-circle">
-	  	<div class="row">
-	      	<div class="col-sm-8">
-		  	 	<div class="posts well">
-		  	 		<div class="post-title text-right"> {{ page.title }}</div>
-		  	 		<div class="content text-left">{{ content }}</div>
-		  	 		<!-- UY BEGIN -->
-					<div id="uyan_frame"></div>
-					<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2006439"></script>
-					<!-- UY END -->		  	 
-		  	<div class="text-center">
-				  <ul class="pager">
-				  	{% if page.previous %}
-				    <li>
-				      <a href="{{ page.previous.url }}">页前</a>
-				    {% else %}
-				    <li class="disabled">
-				      <a href="{{ page.previous.url }}">页前</a>
-				    {% endif %}
-				    </li>
-					 <li><a href="/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
-					{% if page.next %}
-				    <li>
-				      <a href="{{ page.next.url }}">页后</a>
-				    {% else %}
-				    <li class="disabled">
-				    	 <a href="{{ page.next.url }}">页后</a>
-				    {% endif %}
-				    </li>
-				  </ul>
-				</div>
-				</div>	
-			  </div>
-	  	</div><!-- row -->
-	</div><!-- container -->
-	</div>
-	{% include footer.html %}
-<script type="text/javascript" src="/assets/default.js"></script>
-<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-<script type="text/javascript" src="/assets/bootstrap/js/bootstrap.min.js"></script>
+<footer>{% include footer.html %}</footer>
 </body>
 </html>

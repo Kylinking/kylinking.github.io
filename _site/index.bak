@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <meta charset=utf-8" />
+	  <link rel="stylesheet" type="text/css" href="/assets/default.css">
+	　<title>静</title>
+	</head>
+	<body>
+		<div class="page">
+			<div class="banner-background">   
+			    <img class="icon" src="/jing.jpg"; />   
+			</div> 
+			<div class="blog-header container">
+			    <nav>
+			      <img src="/assets/flower.jpg" alt="" class="img-circle">
+			    </nav>  
+			</div>
+			<div class="container blog-index" >
+			  <div class="row">
+		      <div class="col-sm-8">			 
+			  	 
+				<div class="text-center">
+				  <ul class="pager">
+				  	
+				    	<li class="disabled"><a href="#">页前</a>
+				    
+					 </li>
+					
+				    <li class="disabled">
+					   <a href="">页后 </a>
+				    
+				    </li>
+				  </ul>
+				</div>
+			  </div>
+			  </div>
+			   <div class="col-sm-3 col-sm-offset-1">
+         
+          <div class="sidebar-category well">
+            <h4>类目</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">随笔</a></li>
+            </ol>
+          </div>
+           <div class="sidebar-about well">
+            <h4>关于</h4>
+            <p>Kylin's blog.</p>
+            <p>关于前端学习与生活点滴的内容</p>
+          </div>
+        </div>
+			  </div><!-- row -->
+			</div>
+			<div class="to-top"></div>
+		</div>
+					<footer class="blog-footer">
+			<p class="text-center">静思及远@<a href="mailto:kylinsmail@gmail.com"><small>Mail me<small><a></p>
+		</footer>
+		  <script type="text/javascript" src="/assets/default.js"></script>
+		  <scripttype="text/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+		  <script type="text/javascript" src="/assets/bootstrap/js/bootstrap.min.js"></script>
+	</body>
+</html>

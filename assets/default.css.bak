@@ -1,0 +1,129 @@
+html{
+  position: relative;
+  min-height: 100%;
+}
+body{
+  font-family: "Verdana", "Hiragino Sans GB", "Microsoft YaHei",
+             "WenQuanYi Micro Hei", sans-serif;
+  line-height: 1.5;
+  font-size: 18px;
+  height:100%
+  
+}
+
+.page{
+    margin-bottom:60px;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1000px
+  }
+}
+
+.banner-background{
+  background: white; 
+  position:relative; 
+  width:100%; 
+  height:160px; 
+  z-index:-1;
+}
+
+.icon{
+  position:absolute; 
+  right: 20%;
+}
+/*
+ * Masthead for nav
+ */
+
+.blog-header {
+  margin-bottom: 20px;
+}
+
+/* Nav links */
+.nav-item{
+  color: black;
+  font-size: 36px;
+}
+
+/* posts excerpt */
+.posts-index{
+
+}
+
+.pagination{
+}
+
+.post-title-index{
+  font-size: 32px;
+  color: black;
+}
+.post-meta-index{
+}
+.excerpt{
+  line-height: 2.0;
+}
+
+/* in post page */
+.return{
+  position: relative;
+  top: 150px; 
+}
+.posts{
+    margin-top: 10px;
+}
+.post-title{
+  position: relative;
+  font-size: 32px;
+  margin-bottom: 40px;
+  line-height: 1.4;
+}
+.post-page-nav{
+  
+}
+.content{  
+  line-height: 2.0
+}
+
+
+.to-top{
+  position: fixed;
+  right: 20%;
+  bottom:80px;
+}
+
+
+
+.blog-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  padding: 20px 0px;
+  color: #999;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-top: 1px solid #e5e5e5;
+  font-size: 20px;
+}
+
+.blog-footer p:last-child {
+  margin-bottom: 0;
+}
+
+.well{
+  border-radius: 10px;
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+}
+
+.sidebar-category {
+  padding: 15px;
+}
+.sidebar-about {
+  font-style: bold;
+  padding: 15px;
+  font-size: 15px;
+
+}

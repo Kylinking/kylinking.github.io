@@ -1,0 +1,23 @@
+---
+---
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="/assets/default.css">
+<title>静思及远--Life</title>
+</head>
+<body>
+{% include header.html %}
+<article></article>
+<div class="post_list">
+<h1>life</h1>
+<ul>
+	{% for post in site.categories.life %}	
+<li><a href="{{ post.url}}">{{ post.title }} --- {{ post.date|date_to_string }}</a></li>
+	{% endfor %}
+	</ul>
+</div>
+<footer></footer>
+</body>
+</html>
