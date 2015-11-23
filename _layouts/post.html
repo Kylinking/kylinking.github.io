@@ -23,17 +23,17 @@
                                         {% if page.previous %}
                                     <li>
                                       <a href="{{ page.previous.url }}">页前</a>
-                                    {% endif %}
                                     </li>
+                                    {% endif %}
                                         {% if page.next %}
                                     <li>
                                       <a href="{{ page.next.url }}">页后</a>
-                                    {% endif %}
                                     </li>
+                                    {% endif %}
                                   </ul>
     </div>                            
 </article>
 
-<footer>{% include footer.html %}</footer>
+{% include footer.html %}
 </body>
 </html>
