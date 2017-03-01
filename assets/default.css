@@ -16,7 +16,7 @@ header{
 	vertical-align: center;
 }
 header h1{
-	margin-bottom: 5px;
+	margin-bottom: 0px;
 	padding-bottom: 0px;
 }
 header p{
@@ -81,6 +81,9 @@ article div.excerpt{
 	padding-bottom:10px;
 }
 article div.excerpt:last-child{
+}
+article h1{
+	padding: 0 0 5px 0;
 }
 article div h1{
 	width: 100%;
@@ -152,7 +155,6 @@ div.category_list > div.category>h1{
 div.category_list > div.category li{
 	line-height: 22px;
 	padding: 1px;
-	visibility: 
 }
 
 div.category_list > div.category li:first-child{
