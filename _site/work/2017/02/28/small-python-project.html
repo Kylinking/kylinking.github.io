@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="/assets/default.css">
+<title>静思及远 ---- 记一个Python小项目中的那些坑</title>
+</head>
+<body>
+<header>
+	<h1>静思及远</h1>
+	<p>个人博客</p>
+</header>
+<nav>
+	<a href="/">文章列表</a>
+	<a href="/category.html">分类列表</a>
+	<a href="#">图集</a>
+	<a id="about" href="#">关于</a>
+</nav>
+
+<aside>	
+</aside>
+<article>
+<h1>记一个Python小项目中的那些坑</h1>
+<div class="content">
+	<h3 id="先写一点背景">先写一点背景</h3>
+
+<p>出于同事的工作需要，由我将他的几个片断Python代码整合成<strong>一个配置化工具，功能主要是将主机上取下的日志文件脱去其中的一部分信息。</strong>后面的过程来看，这一句话的需求，造成了不少的坑。</p>
+
+<h3 id="坑的开始">坑的开始</h3>
+<h4 id="1-测试文件大小与实际文件大小差距过大">1 测试文件大小与实际文件大小差距过大</h4>
+
+<p>首先是提供出来的测试文件的坑：一个压缩包解压出来约5千个文件，大小在1M以内，于是第一版代码很快出来：</p>
+<pre><code>
+    with open(file_path, 'r') as file_handle:
+        buff = file_handle.read().replace('source_string', 'replace_string')
+    # 写回原文件
+</code></pre>
+<p>整个程序执行了几次，自我测试没有问题之后，关上日志输出交付到应用环境执行，原本应该在20秒左右结束的程序，久久没有结果，于是查看了一下程序执行情况，内存占用在4000M以上波动，内心感受万马奔腾。打开日志输出，查找出来程序卡在某文件的处理上，定位到该文件，发现该日志文件足有2G大小，上面所示的直接读进内存处理的方法自然不可取了，于是改一版：</p>
+<pre><code>
+    # 判断遇到的是一个大文件，小文件依旧整个读进内存处理
+    # 打开一个临时文件
+    with open(file_path, 'r') as file_handle:
+        while line in file_handle:
+            line.replace('source_string', 'replace_string')    
+        # 逐行写入临时文件
+    # 用临时文件替换原文件 
+</code></pre>
+<p>再次执行，内存占用停留在30M以内，稳定输出。另外提到一点的是，上次为了提高执行速度，在交付执行的时候关掉了日志输出，这一点很不可取，因为当程序执行的时候，一片空白，不知道情况，使用的人是很容易抓狂的，因此，这次在代码中加入了显示处理正在处理哪个文件和已处理的输出信息，虽然牺牲了一点效率，但使用友好度提升了一个档次，也是值得的。</p>
+
+<h4 id="2-文件编码-gbk与utf-8">2 文件编码 GBK与UTF-8</h4>
+<p>这个问题出现，一部份原因是自己在理解“Python 3编码是utf-8”这句话的时候产生的误解。原意指Python 3的source file是采用utf-8进行的编码，而我理解的是Python 3会默认用utf-8处理文件，其中包括了source file和打开的文件。这也就导致了前面代码中的：</p>
+<pre>
+<code>      open(file_path, 'r')</code>
+</pre>
+<p>而不是：</p>
+<pre>
+<code>      open(file_path, 'r', encoding='utf-8')</code>
+</pre>
+<p>而在Windows上执行时，遇上从Unix上拷贝过来的文件，就狗带了。
+报错信息类似于”读取文件出错，GBK无法解析编码‘XX’”，将文件解析方式改为utf-8后，填坑结束，猜测Python是根据操作系统来决定打开文件时默认采用的解析编码的。</p>
+
+<p>关于utf-8编码遇到的另一个坑是在解析配置文件的过程中，对于使用Windows记事本保存为utf-8格式的文件解析时，针对首行匹配总是失败，将配置打开成16进制显示，才恍然大悟这多出来的三字节BOM（Byte Order Mark），静静的立在那儿，中断了所有的解析代码。</p>
+
+<h4 id="3-关于并发">3 关于并发</h4>
+<p>读取大量文件之类的IO密集性操作，第一反应就是要使用多线程或者是多进程来并发，加速程序执行，对于Python来说，要实现并发很简单，使用 multiprocessing.dummy.pool.map即可简单的实现多进程并发，并且可以根据逻辑核心数，通过修改进程池大小来调试程序的执行效率。但是——什么好处都抵不过一句但是——在之前提供的压缩包中存在的大量文件，让我以为需要操作的文件是聚集在一起的，意味着在每一层级的目录中会有大量的待操作文件，而不是在目录树的最深处，藏着一两个巨无霸。所以，当采用广度优先的并发策略——即并发处理完一级路径的所有文件后再递归下一级路径——遇到数十层目录下零零散散的一两个文件时，卒。</p>
+
+<p>填坑？</p>
+
+<p>考虑到该情况的总是极大文件，且文件数量极少，所以对程序运行的总时间影响并不是很大（沧海桑田也不过弹指一的瞬间），再考虑到本次批量操作文件的任务已临近终点，所以，等有需要的时候再填吧。</p>
+
+<h4 id="4-关于异常处理">4 关于异常处理</h4>
+<p>其实一开始，我是不太重视异常处理的，一方面是因为这个程序比较的小，所以想当然的以为各种状态都能想得到，输入输出什么的都在考虑当中，测试过程中也未出现什么差错。
+测试的归测试，实战的归实战。当执行过程中，因为各种问题报错导致运行中断的时候，除了一脸黑线以外，最要紧的就是赶紧加上异常捕获，对不影响其它操作的异常作好记录,继续把正常的运行下去。特别是对于文件操作，编码不对会异常，文件占用会异常，等等。</p>
+
+<h3 id="写在最后">写在最后</h3>
+<p>最后，在修修补补中通过交付 ，完成了数万个文件的过滤操作，配置化功能基本实现（此文完全没有提到），大概后续会做成一个定时任务，按周期执行。</p>
+
+<p>掉进的这些坑里面，充分的展示了：</p>
+
+<p>需求完整的重要性，一句话需求导致了<em>配置化</em>这个重要特性返工多次。</p>
+
+<p>对实际环境的全方位认识，没有全方位认识，必然导致代码实现与实际脱节，写出来的程序不能满足实际需求或是干脆完全不能用。</p>
+
+<p>异常处理，实际应用中，环境的复杂性，输入要素的复杂性与罕见问题的偶发性要求一个健壮的程序必然要对这些偶发的，罕见的异常输入具备一定的处理能力。</p>
+
+<p>再补充一点，使用一些集成的静态检查工具（如本例中使用到的pylint，可以在保存时对代码），可以在编码时滤除一些低级错误，提高开发效率。</p>
+<h3 id="最后的最后">最后的最后</h3>
+<p>人生苦短，我用Python.</p>
+
+</div>
+<!-- 多说评论框 start -->	<div class="ds-thread" data-thread-key=/work/2017/02/28/small-python-project data-title=记一个Python小项目中的那些坑 data-url="https://kylinking.github.io//work/2017/02/28/small-python-project.html"></div><!-- 多说评论框 end --><!-- 多说公共JS代码 start (一个网页只需插入一次) --><script type="text/javascript">var duoshuoQuery = {short_name:"kylinkings"};	(function() {		var ds = document.createElement('script');		ds.type = 'text/javascript';ds.async = true;		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';		ds.charset = 'UTF-8';		(document.getElementsByTagName('head')[0] 		 || document.getElementsByTagName('body')[0]).appendChild(ds);	})();	</script><!-- 多说公共JS代码 end -->
+    <div>
+    <ul class="pager">
+                                        
+                                    <li>
+                                      <a href="/life/2015/01/24/2014-zong-jie.html">页前</a>
+                                    </li>
+                                    
+                                        
+                                  </ul>
+    </div>                            
+</article>
+
+		<footer class="blog-footer">
+			<p class="text-center">静思及远@<a href="mailto:kylinsmail@gmail.com"><small>Mail me</small></a></p>
+		</footer>
+
+</body>
+</html>
