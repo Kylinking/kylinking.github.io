@@ -14,36 +14,36 @@
 
 <body>
 	<div class="container">
-	{% include header.html %}
-	<div class="category_list row">
-		{% for category in site.categories %}
-		<div class="category col-sm-3 col-xs-4">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-				<h1>{{ category.first }}</h1>
+		{% include header.html %}
+		<div class="category_list row">
+			{% for category in site.categories %}
+			<div class="category col-sm-6 col-xs-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h1>{{ category.first }}</h1>
+					</div>
+					<div class="panel-body">
+						<ul>
+							{% for post in category.last limit:5 %}
+							<li><a href={{ post.url}}>{{ post.title }}</a></li>
+							{% endfor %}
+						</ul>
+						{% if category.last.size > 5 %}
+						<div class="more"><a href="/{{ category.first }}.html">More</a></div>
+						{% endif %}
+					</div>
 				</div>
-				<div class="panel-body">
-				<ul>
-					{% for post in category.last limit:5 %}
-					<li><a href={{ post.url}}>{{ post.title }} --- {{ post.date|date_to_string }}</a></li>
-					{% endfor %}
-				</ul>
-				{% if category.last.size > 5 %}
-				<div class="more"><a href="/{{ category.first }}.html">More</a></div>
-				{% endif %}
-				</div>
-			</div>
 			</div>
 			{% endfor %}
-		
+		</div>
 	</div>
-</div>
 	<footer></footer>
-	  <script src='/assets/bootstrap-3.3.7-dist/js/jquery-3.1.1.min.js'></script>
-    <script src='/assets/bootstrap-3.3.7-dist/js/bootstrap.min.js'></script>
+	<script src='/assets/bootstrap-3.3.7-dist/js/jquery-3.1.1.min.js'></script>
+	<script src='/assets/bootstrap-3.3.7-dist/js/bootstrap.min.js'></script>
 	<script>
-        $("#navCategory").addClass('active').addClass('disabled')
-</script>
+		$("#navCategory").addClass('active').addClass('disabled')
+
+	</script>
 </body>
 
 </html>

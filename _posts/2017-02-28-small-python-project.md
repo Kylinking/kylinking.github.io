@@ -2,8 +2,9 @@
 layout: post
 author: kylin
 title: 记一个Python小项目中的那些坑
-category: work
+categories: [work]
 excerpt: 在一个小工具的开发过程中不断遇坑填坑后的一点感受
+tags: [Python, Project Management]
 ---
 ### 先写一点背景
 
