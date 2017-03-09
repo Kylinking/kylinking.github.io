@@ -1,29 +1,53 @@
----
+--- 
 ---
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="/assets/default.css">
-<title>静</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/assets/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/assets/default.css">
+    <title>静</title>
 </head>
+
 <body>
-{% include header.html %}
-<aside>	
-</aside>
-<article>
-{% for post in site.posts limit:5 %}
-	<div class="recent_list">        
-             <h1>
-                <a class="post-title-index" href="{{ post.url }}">{{ post.title }}</a>
-             </h1>
-         <p>{{ post.date | date: "%Y年%-m月%-d日 "}}</p>
-                                        <div class="excerpt">
-                                                {{ post.excerpt }}
-                                        </div>        
+    <div class="container">
+        {% include header.html %}
+        <aside>
+        </aside>
+        <article>
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+                    {% for post in site.posts limit:5 %}
+                    <div class="recent_list">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <a class="post-title-index" href="{{ post.url }}">
+                                        <h2>{{ post.title }}</h2>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                {{ post.content }}
+                            </div>
+                        </div>
+                        <div class="excerpt">
+
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </article>
     </div>
-{% endfor %}
-</article>
-{% include footer.html %}
+    <script src='/assets/bootstrap-3.3.7-dist/js/jquery-3.1.1.min.js'></script>
+    <script src='/assets/bootstrap-3.3.7-dist/js/bootstrap.min.js'></script>
+    <script>
+        $("#navIndex").addClass('active').addClass('disabled')
+    </script>
 </body>
+
 </html>
